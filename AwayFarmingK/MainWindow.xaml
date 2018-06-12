@@ -1,0 +1,120 @@
+﻿<Window x:Class="com.akoimeexx.utilities.AwayFarmingK.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:com.akoimeexx.utilities.AwayFarmingK"
+    mc:Ignorable="d"
+    
+    Height="160" 
+    Icon="App.ico" 
+    ResizeMode="CanMinimize" 
+    Title="Away Farming, K?" 
+    Width="384" 
+>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="_File">
+                <MenuItem Header="E_xit" Click="ExitMenuItem_Click" />
+            </MenuItem>
+            <MenuItem Header="_About" Click="AboutMenuItem_Click" />
+        </Menu>
+        <Grid Grid.Row="1" 
+            Margin="10" 
+            VerticalAlignment="Center"
+        >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label 
+                Content="Minecraft Instance" 
+                HorizontalContentAlignment="Right" 
+            />
+            <Grid Grid.Column="1" 
+            >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="Instances" 
+                    ItemsSource="{Binding 
+                        Path=MinecraftInstances, 
+                        Mode=OneWay
+                    }" 
+                    VerticalContentAlignment="Center" 
+                />
+                <Button Grid.Column="1" 
+                    Click="ReloadInstances_Click" 
+                    Content="↻" 
+                    FontSize="16"
+                    ToolTip="Reload Minecraft Instances" 
+                />
+            </Grid>
+            
+            <Label Grid.Row="1" 
+                Content="Toggle Auto-Clicking" 
+                HorizontalContentAlignment="Right" 
+            />
+            <Button Grid.Column="1" Grid.Row="1" 
+                Click="ToggleClicking_Click"
+            >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Button.Content" Value="Toggle Auto-Clicking!" />
+                        <Style.Triggers>
+                            <DataTrigger 
+                                Binding="{Binding 
+                                    ElementName=Instances, 
+                                    Path=SelectedItem, 
+                                    Mode=OneWay
+                                }" 
+                                Value="{x:Null}"
+                            >
+                                <Setter Property="Button.IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger 
+                                Binding="{Binding 
+                                    ElementName=Instances, 
+                                    Path=SelectedItem.IsClicking, 
+                                    Mode=OneWay
+                                }" 
+                                Value="False"
+                            >
+                                <Setter Property="Button.Content" Value="Start Auto-Clicking!" />
+                            </DataTrigger>
+                            <DataTrigger 
+                                Binding="{Binding 
+                                    ElementName=Instances, 
+                                    Path=SelectedItem.IsClicking, 
+                                    Mode=OneWay
+                                }" 
+                                Value="True"
+                            >
+                                <Setter Property="Button.Content" Value="Stop Auto-Clicking!" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Label Grid.Row="2" 
+                Content="Hide Window While Farming" 
+                HorizontalContentAlignment="Right" 
+            />
+            <CheckBox x:Name="HideInstance" Grid.Column="1" Grid.Row="2" 
+                VerticalAlignment="Center" 
+            />
+            
+        </Grid>
+    </Grid>
+</Window>
