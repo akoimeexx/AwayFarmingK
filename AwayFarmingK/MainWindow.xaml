@@ -21,7 +21,18 @@
             <MenuItem Header="_File">
                 <MenuItem Header="E_xit" Click="ExitMenuItem_Click" />
             </MenuItem>
-            <MenuItem Header="_About" Click="AboutMenuItem_Click" />
+            <MenuItem Header="_Help">
+                <MenuItem 
+                    InputGestureText="F1" 
+                >
+                    <MenuItem.Header>
+                        <Hyperlink 
+                            NavigateUri="https://github.com/akoimeexx/AwayFarmingK/wiki"
+                        >Online Help</Hyperlink>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Header="_About" Click="AboutMenuItem_Click" />
+            </MenuItem>
         </Menu>
         <Grid Grid.Row="1" 
             Margin="10" 
@@ -62,7 +73,7 @@
             </Grid>
             
             <Label Grid.Row="1" 
-                Content="Toggle Auto-Clicking" 
+                Content="Toggle &quot;Use Item&quot;" 
                 HorizontalContentAlignment="Right" 
             />
             <Button Grid.Column="1" Grid.Row="1" 
@@ -70,7 +81,7 @@
             >
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
-                        <Setter Property="Button.Content" Value="Toggle Auto-Clicking!" />
+                        <Setter Property="Button.Content" Value="Toggle &quot;Use Item&quot;!" />
                         <Style.Triggers>
                             <DataTrigger 
                                 Binding="{Binding 
@@ -90,7 +101,7 @@
                                 }" 
                                 Value="False"
                             >
-                                <Setter Property="Button.Content" Value="Start Auto-Clicking!" />
+                                <Setter Property="Button.Content" Value="Start &quot;Use Item&quot;!" />
                             </DataTrigger>
                             <DataTrigger 
                                 Binding="{Binding 
@@ -100,7 +111,7 @@
                                 }" 
                                 Value="True"
                             >
-                                <Setter Property="Button.Content" Value="Stop Auto-Clicking!" />
+                                <Setter Property="Button.Content" Value="Stop &quot;Use Item&quot;!" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
