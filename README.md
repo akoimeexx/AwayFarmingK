@@ -18,3 +18,6 @@ This program can only function if the following conditions are met:
 This program uses underlying operating system api calls to send event messages to windows. When toggling the "Use Item" state to on, the right mouse button down event is sent once. When toggling the "Use Item" state to off, the right mouse button up event is sent once.
 
 That's it; that's the secret sauce.
+
+## Download
+I firmly recommend downloading the source and compiling Away Farming, K yourself. However, if you do not have VS Community (or do not want to learn how to deal with compiling source yourself), you can download the first compiled version from [dropbox](https://www.dropbox.com/s/5a5pacypkbeeari/AwayFarmingK_Executable.zip?dl=0).
